@@ -10,4 +10,4 @@ jobs:
       - name: Load Schema of Solr
         run: |
           docker run -d --name solr -p 2020:8983 solr:8 -DzkRun
-          docker exec -i ${{ job.services.solr.id }} sh < .github/setups/cont.sh
+          docker exec -i solr sh < .github/setups/cont.sh
