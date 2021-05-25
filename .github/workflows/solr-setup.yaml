@@ -12,3 +12,4 @@ jobs:
           docker run -d --name solr -p 2020:8983 solr:8 -DzkRun;
           sleep 10s;
           docker exec -i solr sh < .github/setups/cont.sh;
+          curl -X POST --data '{"id":3,"name":"bhavya123","dateOfBirth":"21-09-1999"}' http://localhost:9099/customer
