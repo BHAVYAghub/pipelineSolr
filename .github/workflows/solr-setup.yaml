@@ -1,0 +1,19 @@
+name: Run Solr Example
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      solr:
+        image: solr:8
+        ports:
+          - 2020:8983
+        command:
+          - '-Dzkrun'
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+      - name: Load Schema of Solr
+        run: |
+          docker exec -i ${{ job.services.solr.id }} cqlsh --debug sh<.github/setups/cont.sh
