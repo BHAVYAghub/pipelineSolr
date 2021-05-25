@@ -16,8 +16,7 @@ jobs:
           curl -X POST -H 'Content-Type: application/json' 'http://localhost:2020/solr/customer/update/json/docs?commit=true' --data-binary '
 
             {
-              "id": "1",
-              "name": "bhavya1","dateOfBirth":"21-03-1945"
+             "sell-by":"me"
             }
           '
           curl http://localhost:2020/solr/customer/query -d 'q=*:*'
