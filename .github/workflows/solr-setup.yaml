@@ -4,14 +4,10 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      solr:
-        image: solr:8 -DzkRun
-        ports:
-          - 2020:8983
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
       - name: Load Schema of Solr
         run: |
+          docker run --name solr -p 2020:8983 solr:8 -DzkRun
           docker exec -i ${{ job.services.solr.id }} cqlsh --debug sh<.github/setups/cont.sh
