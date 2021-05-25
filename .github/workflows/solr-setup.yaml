@@ -12,7 +12,7 @@ jobs:
           docker run -d --name solr -p 2020:8983 solr:8 -DzkRun;
           sleep 10s;
           docker exec -i solr sh < .github/setups/cont.sh;
-          curl http://localhost:2020/solr/customer/query -d '*:*'
+          curl http://localhost:2020/solr/customer/query -d 'q=*:*'
           curl -X POST -H 'Content-Type: application/json' 'http://localhost:2020/solr/customer/update/json/docs?commit=true' --data-binary '
 
             {
@@ -20,7 +20,7 @@ jobs:
               "name": "bhavya1","dateOfBirth":"21-03-1945"
             }
           '
-          curl http://localhost:2020/solr/customer/query -d '*:*'
+          curl http://localhost:2020/solr/customer/query -d 'q=*:*'
 
 
 
