@@ -9,5 +9,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Load Schema of Solr
         run: |
-          docker run --name solr -p 2020:8983 solr:8 -DzkRun
+          docker run -d --name solr -p 2020:8983 solr:8 -DzkRun
           docker exec -i ${{ job.services.solr.id }} cqlsh --debug sh<.github/setups/cont.sh
