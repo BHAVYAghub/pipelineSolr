@@ -6,11 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       solr:
-        image: solr:8
+        image: solr:8 -Dzkrun
         ports:
           - 2020:8983
-        command:
-          - '-Dzkrun'
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
